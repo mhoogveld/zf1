@@ -229,7 +229,7 @@ foreach ($matches as $match) {
     $maxWidth = max($maxWidth, strlen($match[1]));
 }
 
-$content = preg_replace('(\n\s+([^=]+)=>)e', "'\n    \\1' . str_repeat(' ', " . $maxWidth . " - strlen('\\1')) . '=>'", $content);
+$content = preg_replace('(\n\s+([^=]+)=>)', "\n    \\1 =>", $content);
 
 // Make the file end by EOL
 $content = rtrim($content, "\n") . "\n";
