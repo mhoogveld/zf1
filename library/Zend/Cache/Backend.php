@@ -172,7 +172,6 @@ class Zend_Cache_Backend
     public function getTmpDir()
     {
         $tmpdir = array();
-        $test = array();
         foreach (array($_ENV, $_SERVER) as $tab) {
             foreach (array('TMPDIR', 'TEMP', 'TMP', 'windir', 'SystemRoot') as $key) {
                 if (isset($tab[$key]) && is_string($tab[$key])) {
@@ -200,7 +199,7 @@ class Zend_Cache_Backend
                 return $dir;
             }
         }
-        // Attemp to detect by creating a temporary file
+        // Attempt to detect by creating a temporary file
         $tempFile = tempnam(md5(uniqid(rand(), TRUE)), '');
         if ($tempFile) {
             $dir = realpath(dirname($tempFile));
